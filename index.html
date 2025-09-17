@@ -604,8 +604,8 @@
                     
                     <div class="input-group">
                         <label for="courseCredit">学分</label>
-                        <input type="number" id="courseCredit" min="0.5" max="10" step="0.5" placeholder="例如：3.5" value="2">
-                        <div class="error-message" id="creditError">请输入有效的学分(0.5-10)</div>
+                        <input type="number" id="courseCredit" min="0.25" max="10" step="0.25" placeholder="例如：3.5" value="2">
+                        <div class="error-message" id="creditError">请输入有效的学分(0.25-10)</div>
                     </div>
                     
                     <div class="input-group">
@@ -1023,7 +1023,7 @@
             }
             
             // 验证学分
-            if (isNaN(courseCredit) || courseCredit < 0.5 || courseCredit > 10) {
+            if (isNaN(courseCredit) || courseCredit < 0.25 || courseCredit > 10) {
                 document.getElementById('courseCredit').classList.add('input-error');
                 document.getElementById('creditError').style.display = 'block';
                 isValid = false;
@@ -1149,7 +1149,7 @@
             // 替换为输入框
             nameCell.innerHTML = `<input type="text" value="${course.name}" class="edit-input course-name-input">`;
             scoreCell.innerHTML = `<input type="text" value="${course.originalScore}" class="edit-input course-score-input">`;
-            creditCell.innerHTML = `<input type="number" min="0.5" max="10" step="0.5" value="${course.credit}" class="edit-input course-credit-input">`;
+            creditCell.innerHTML = `<input type="number" min="0.25" max="10" step="0.25" value="${course.credit}" class="edit-input course-credit-input">`;
             actionCell.innerHTML = `
                 <button class="btn btn-save save-btn" data-index="${index}">
                     <i class="fas fa-check"></i> 保存
@@ -1203,8 +1203,8 @@
                 return;
             }
             
-            if (isNaN(newCredit) || newCredit < 0.5 || newCredit > 10) {
-                alert('请输入有效的学分(0.5-10)');
+            if (isNaN(newCredit) || newCredit < 0.25 || newCredit > 10) {
+                alert('请输入有效的学分(0.25-10)');
                 return;
             }
             
@@ -1503,7 +1503,7 @@
                 if (!creditMatch) return;
                 
                 const credit = parseFloat(creditMatch[0]);
-                if (credit < 0.5 || credit > 10) return; // 学分范围验证
+                if (credit < 0.25 || credit > 10) return; // 学分范围验证
                 
                 // 尝试匹配成绩
                 const scoreMatch = line.match(scoreRegex);
@@ -1562,7 +1562,7 @@
                     <tr>
                         <td><input type="text" value="${course.name}" class="extracted-name" data-index="${index}"></td>
                         <td><input type="text" value="${course.originalScore}" class="extracted-score" data-index="${index}"></td>
-                        <td><input type="number" min="0.5" max="10" step="0.5" value="${course.credit}" class="extracted-credit" data-index="${index}"></td>
+                        <td><input type="number" min="0.25" max="10" step="0.25" value="${course.credit}" class="extracted-credit" data-index="${index}"></td>
                         <td><input type="checkbox" checked class="import-checkbox" data-index="${index}"></td>
                     </tr>
                 `;
@@ -1595,7 +1595,7 @@
                 const credit = parseFloat(document.querySelector(`.extracted-credit[data-index="${index}"]`).value);
                 
                 // 验证
-                if (!scoreText || isNaN(credit) || credit < 0.5 || credit > 10) {
+                if (!scoreText || isNaN(credit) || credit < 0.25 || credit > 10) {
                     return;
                 }
                 
